@@ -1,4 +1,6 @@
 public class Grocery extends Order {
+    //child class for  grocery order
+
     public Grocery() {
         super();
         GroceryMenu();

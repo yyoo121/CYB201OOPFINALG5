@@ -1,5 +1,5 @@
 import java.util.LinkedList;
-
+//this is the parent class and use to get data from the child class which is the food,laundry,grocery,flower
 public class Order{
     protected LinkedList<Item> items;
 

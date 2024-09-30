@@ -1,15 +1,16 @@
 import java.util.*;
 import java.util.Scanner;
-
-public class Option {
+//this is the option class where methods for option are called.
+public class Option{
     private Carts cart;
     private Scanner sc = new Scanner(System.in);
 
-    public Option(Carts cart) {
+    public Option(Carts cart){
         this.cart = cart;
     }
 
-    public void ItemAdder(Order menu) {
+    public void ItemAdder(Order menu){          //method for adding items  to the cart
+
         for (int x = 0;x<menu.getTotalItems();x++) {
             System.out.println((x + 1) 
             + ". "
@@ -21,7 +22,7 @@ public class Option {
         System.out.println("Enter the item you want to add [use index]: ");
         int n = sc.nextInt();
 
-        if (n > 0 && n <= menu.getTotalItems()) {
+        if (n > 0 && n <= menu.getTotalItems()){
             Item item = new Item(menu.getItem(n-1),menu.getPrice(n-1), 1);
             cart.addItem(item);
 
@@ -39,13 +40,14 @@ public class Option {
                 +cart.getItemList().get(x).getQuantity() 
                 + " - Price: " 
                 + cart.getItemList().get(x).getTotalPrice());
-            }
-        } else {
-            System.out.println("invalid index");
-        }
-    }
 
-    public void ItemRemover(){
+            }
+            } else    { System.out.println("invalid index"); }
+            }
+
+    public void ItemRemover(){           //method to remove items  from the cart
+
+
         System.out.println("Enter the index of the item you want to remove: ");
         int x=sc.nextInt();
 
@@ -56,34 +58,37 @@ public class Option {
         } else {
             System.out.println("Invalid index");
         }
-    }
+        }
 
-    public void ItemUpdater(){
+    public void ItemUpdater(){          //method to change quantity of items  in the cart
+
+
         System.out.println("Enter the index of the item you want to update/change quantity: ");
         int x = sc.nextInt();
 
-        if (x>0 && x <= cart.getItemList().size()) {
+        if (x>0 && x <= cart.getItemList().size()){
             System.out.println("type new quantity: ");
             int quantity = sc.nextInt();
 
             cart.updateItem(x - 1, quantity);
 
             System.out.println("item is updated successfully");
-        } else {
-            System.out.println("index only");
+
+        } else { System.out.println("index only"); }
         }
-    }
 
-    public void CreateNewCart(){
+    public void CreateNewCart(){        //method to create a new instance of cart 
+
         cart = new Carts();
-
         System.out.println("you created a new cart");
     }
 
-    public void checkout(){
+    public void checkout(){         //checkout the items in the cart and print
+
+
         System.out.println("your cart:");
         for (int x = 0; x < cart.getItemList().size(); x++) {
-            System.out.println((x + 1) 
+            System.out.println( (x + 1) 
             + ". " + cart.getItemList(). get(x).getName() 
             + " - Quantity: "
             + cart.getItemList().get(x).getQuantity() 
@@ -94,6 +99,7 @@ public class Option {
         System.out.println("your total bill is: " + cart.getTotalPrice());
     
         double money;
+
         while (true) {
             try {
                 System.out.println("enter your money: ");
@@ -117,7 +123,7 @@ public class Option {
         System.out.println("ITEMS:");
 
         for (int x = 0; x < cart.getItemList().size(); x++) {
-            System.out.println((x + 1) 
+            System.out.println( (x + 1) 
             + ". " 
             + cart.getItemList(). get(x).getName() 
             + " - Quantity: " 
@@ -125,6 +131,7 @@ public class Option {
             + " - Price: " 
             + cart.getItemList().get(x).getTotalPrice());
         }
+
         System.out.println("\nmoney: " + money);
         System.out.println("Total: " + cart.getTotalPrice());
         System.out.println("Change: " + change);
@@ -134,6 +141,7 @@ public class Option {
         System.out.println("2. exit now ");
     
         int choice;
+
         while (true) {
             try {
                 System.out.println("Enter your choice: ");
@@ -145,7 +153,8 @@ public class Option {
             }
         }
     
-        switch (choice){
+                    switch (choice){
+
             case 1:orderAgain();break;
             case 2:System.exit(0);break;
             default:
@@ -154,13 +163,15 @@ public class Option {
     }
     
 
-    public void orderAgain(){
+    public void orderAgain(){ //method to order again from the start
+
         cart = new Carts();
         Inputter inputter = new Inputter();
         inputter.Inputs();
     }
 
-    public void exit(){
+    public void exit(){ //just method to print exit
+
         System.out.println("exit");
     }
 }

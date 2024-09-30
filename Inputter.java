@@ -1,5 +1,5 @@
 import java.util.*;
-
+//this is the inputter class where most of the code gets inputs from the user.
 public class Inputter{
     private Order menu;
     private Carts cart;
@@ -15,13 +15,15 @@ public class Inputter{
                      }
 
     public void Inputs(){
+
         while (!checkouts){
             try {
                 System.out.println("Choose order type: [1] Food [2] Flower [3] Grocery [4] Laundry");
                 System.out.println("Enter order type: ");
                 int ordertype = sc.nextInt();
 
-                switch (ordertype) {
+                                switch (ordertype)
+                {
                     case 1:   menu = new Food();     break;
                     case 2:   menu = new Flower();   break;
                     case 3:   menu = new Laundry();  break;
@@ -32,7 +34,7 @@ public class Inputter{
                         continue; 
                 }
 
-                if (menu != null) {
+                if (menu != null){
                     Inputs2(menu);
                 }
 
@@ -44,12 +46,13 @@ public class Inputter{
             }
 
     public void Inputs2(Order menu){
+
         while (true){
             try {
 
                 System.out.println("\tMenu:\n---------------------------------------------------------");
                 for (int x = 0; x < menu.getTotalItems(); x++) {
-                    System.out.println((x + 1) 
+                    System.out.println( (x + 1) 
                     + ". " 
                     + menu.getItem(x) 
                     + " - P " 
@@ -59,7 +62,7 @@ public class Inputter{
                 System.out.println("Enter the items [index only]: ");
                 int x = sc.nextInt();
 
-                if (x < 1 || x > menu.getTotalItems()) {
+                if (x<1 || x > menu.getTotalItems()) {
                     System.out.println("from the choices only!!");
                     continue; 
                 }
@@ -68,15 +71,15 @@ public class Inputter{
                 cart.addItem(item);
 
                 System.out.println("You have selected: " 
-                + menu.getItem(x - 1) 
+                + menu.getItem(x-1) 
                 + " - P " 
-                + menu.getPrice(x - 1));
+                + menu.getPrice(x-1));
 
                 System.out.println("\ntotal selected items:");
                 displaySelectedItems();
                 System.out.println("---------------------------------------------------------\n");
 
-                while (true) {
+                while (true){
                     Displayer displayer = new Displayer();
                     displayer.Display3();
 
@@ -114,7 +117,7 @@ public class Inputter{
 
     public void displaySelectedItems() {
         for (int x = 0; x < cart.getItemList().size(); x++){
-            System.out.println((x + 1) 
+            System.out.println( (x + 1) 
             + ". " 
             + cart.getItemList().get(x).getName() 
             + " - quantity: "
